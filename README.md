@@ -5,6 +5,7 @@ Writing sample by Max Cheong (Guanghua School of Management, Peking University).
 The paper estimates the Ryoo–Rosen (2004) model of the market for engineers in a full-information framework. The competitive equilibrium is written as a linear-quadratic planning problem, its solution is put in state-space form together with measurement error, and all parameters are estimated jointly by maximum likelihood with the Kalman filter, using U.S. data for 1968–2010. The paper also compares rational expectations with cobweb expectations within the same likelihood.
 
 - **Paper:** [`paper/writing_sample.pdf`](paper/writing_sample.pdf)
+- **Slides:** [`presentation/Engineering_Enrollment_Presentation.pdf`](presentation/Engineering_Enrollment_Presentation.pdf)
 - **Code:** [`rr_estimation.ipynb`](rr_estimation.ipynb) reproduces every number, table, and figure in the paper.
 
 ## Repository structure
@@ -19,9 +20,13 @@ The paper estimates the Ryoo–Rosen (2004) model of the market for engineers in
 │   └── pi_nsf_1966_2010.csv
 ├── cache/                       # saved results of the slow steps (profile likelihood, etc.)
 ├── figures/                     # figures written by the notebook
-└── paper/
-    ├── writing_sample.pdf
-    └── latex/                   # LaTeX source (compiles with pdflatex + bibtex, e.g. on Overleaf)
+├── paper/
+│   ├── writing_sample.pdf
+│   └── latex/                   # LaTeX source (compiles with pdflatex + bibtex, e.g. on Overleaf)
+└── presentation/
+    ├── Engineering_Enrollment_Presentation.pdf
+    ├── presentation.tex         # Beamer source (compiles with pdflatex)
+    └── fig1.png ... fig5.png    # figures used in the slides
 ```
 
 ## How to run
