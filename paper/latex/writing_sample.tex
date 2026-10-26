@@ -36,7 +36,7 @@
 \maketitle
 
 \begin{abstract}
-Students choose a field of study four years before they enter the labor market, and they are paid over a career, so enrollment depends both on how strongly students respond to wages and on how they form expectations of future wages. We estimate the Ryoo--Rosen model of the market for engineers by full-information maximum likelihood: the competitive equilibrium is solved as a linear-quadratic planning problem, cast in state-space form with measurement error, and taken to U.S. data for 1968--2010 with the Kalman filter. Enrollment is highly sensitive to persistent wage changes: a permanent 1 percent increase in the relative wage eventually raises the share of students entering engineering by about 6 percent. Yet most swings in engineering degrees come from changes in the attractiveness of the field, which follow a damped cycle of about 22 years, rather than from wages. Whether students look through temporary wage changes, as rational expectations imply, the data cannot tell: a cobweb model, in which they do not, fits about as well and better matches the comovement of wages and future degrees, but only with a nearly flat demand curve. The estimated demand elasticity therefore depends on how students form expectations.
+Students choose a field of study four years before they enter the labor market, and they are paid over a career, so enrollment depends both on how strongly students respond to wages and on how they form expectations of future wages. We estimate the Ryoo--Rosen model of the market for engineers by full-information maximum likelihood: the competitive equilibrium is solved as a linear-quadratic planning problem, cast in state-space form with measurement error, and taken to U.S. data for 1968--2010 with the Kalman filter. Enrollment is highly sensitive to persistent wage changes: a permanent 1 percent increase in the relative wage eventually raises the share of students entering engineering by about 6 percent. Yet most swings in engineering degrees come from changes in the attractiveness of the field, which follow a damped cycle of about 22 years, rather than from wages. Whether students distinguish temporary from permanent wage changes, as rational expectations imply, the data cannot tell: a cobweb model, in which they expect the current wage to persist, fits about as well and better matches the comovement of wages and future degrees, but only with a nearly flat demand curve. The estimated demand elasticity therefore depends on how students form expectations.
 \end{abstract}
 
 \bigskip
@@ -50,15 +50,25 @@ Students choose a field of study four years before they enter the labor market, 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}\label{sec:intro}
 
-The supply of engineers in the United States has fluctuated sharply. Engineering accounted for 4.2 percent of all bachelor's degrees in 1976, 7.8 percent in 1985, and 4.7 percent in 2000.\footnote{Engineering bachelor's degrees divided by all bachelor's degrees, from \citet{nsf13327}, Table 5.} The rise was preceded by a rise in the relative pay of engineers: between 1972 and 1982, the ratio of the median earnings of engineers to that of all college graduates rose from 1.33 to 1.50.\footnote{Author's calculations from IPUMS CPS ASEC microdata \citep{ipumscps}; Section \ref{sec:data} gives the definitions.} Such episodes are not new: talk of a ``shortage'' of engineers was widespread in the 1950s \citep{arrow1959dynamic}, and declining interest in engineering drew attention again around 1990 \citep{ryoo2004engineering}. They raise two questions: what drives the booms and busts in the market for engineers, and how far do students base their choice of major on the wages they expect to earn?
+The supply of engineers in the United States has fluctuated sharply. Engineering accounted for 4.2 percent of all bachelor's degrees in 1976, 7.8 percent in 1985, and 4.7 percent in 2000.\footnote{Engineering bachelor's degrees divided by all bachelor's degrees, from \citet{nsf13327}, Table 5.} The rise was preceded by a rise in the relative pay of engineers: between 1972 and 1982, the ratio of the median earnings of engineers to that of all college graduates rose from 1.33 to 1.50.\footnote{Author's calculations from IPUMS CPS ASEC microdata \citep{ipumscps}; Section \ref{sec:data} gives the definitions.} Such episodes are not new: talk of a ``shortage'' of engineers was widespread in the 1950s \citep{arrow1959dynamic}, and declining interest in engineering drew attention again around 1990 \citep{ryoo2004engineering}.
 
-\citet{freeman1971market,freeman1975supply,freeman1976cobweb} explained such cycles in the markets for scientists and engineers with a cobweb model: students choose a field on the basis of the wages prevailing when they enroll, while the supply they create reaches the market several years later. \citet{siow1984occupational} and \citet{zarkin1985occupational} studied occupational choice among lawyers and teachers under rational expectations, and Zarkin compared his model with a cobweb specification. \citet{ryoo2004engineering} developed a dynamic model of the engineering market in which firms' demand falls with the relative wage, students enroll on the basis of the earnings they expect after graduation, and graduates join the stock of engineers four years after they enroll. Estimating the model equation by equation on U.S. data for 1950--1990, they found a demand elasticity between 1.2 and 2.2 and an elasticity of enrollment with respect to career prospects between 2.5 and 4.5.
+These episodes raise four questions, which organize the paper.
+\begin{enumerate}\itemsep0pt
+\item \textbf{Supply.} How strongly does the choice of engineering respond to the wages engineers earn?
+\item \textbf{Demand.} How elastic is the demand for engineers?
+\item \textbf{Sources of the cycle.} What drives the booms and busts in engineering degrees: wages, or changes in the attractiveness of the field?
+\item \textbf{Expectations.} Do students distinguish temporary from permanent changes in wages, or do they expect the current wage to persist?
+\end{enumerate}
+
+Earlier work has addressed each of them. \citet{freeman1971market,freeman1975supply,freeman1976cobweb} explained cycles in the markets for scientists and engineers with a cobweb model, in which students expect the current wage to persist and the supply they create reaches the market several years later. \citet{siow1984occupational} and \citet{zarkin1985occupational} studied occupational choice among lawyers and teachers under rational expectations, and Zarkin compared his model with a cobweb specification. \citet{ryoo2004engineering} developed a dynamic model of the engineering market in which firms' demand falls with the relative wage, students enroll on the basis of the earnings they expect after graduation, and graduates join the stock of engineers four years after they enroll. Estimating the model equation by equation on U.S. data for 1950--1990, they found a demand elasticity between 1.2 and 2.2 and a long-run elasticity of supply with respect to career prospects between 2.5 and 4.5.
 
 Our contribution is to estimate the Ryoo--Rosen model in a full-information framework, using CPS and NSF data for 1968--2010. We show that the competitive equilibrium solves a linear-quadratic planning problem, solve for its law of motion, write it in state-space form together with measurement error, and estimate all parameters jointly by maximum likelihood with the Kalman filter. The framework imposes the restrictions that rational expectations place across the demand, enrollment, and stock equations; it treats expected lifetime earnings, which are not observed, as a function of the model's state rather than measuring them from earnings profiles or instrumenting them; and it accounts for noise in the survey data. Within it we let demand and preference shocks follow unrestricted second-order autoregressions, which allow for cycles, and we construct confidence intervals from the profile likelihood. Because a cobweb model fits into the same likelihood, we can also compare the two forms of expectations directly.
 
-We report three findings. First, enrollment is highly sensitive to persistent changes in wages: a permanent 1 percent increase in the relative wage eventually raises the share of students choosing engineering by about 6 percent under rational expectations and by about 5 percent under the cobweb, and the data rule out an insensitive response. Second, the large swings in the degree share come mainly from changes in the attractiveness of engineering itself, which follow a damped cycle of about 22 years, while the observed stock of engineers is dominated by measurement error. Third, the data cannot tell whether students look through temporary wage changes. Under rational expectations they do: a demand-driven wage increase, which decays by half in about four years, raises enrollment only about one-sixth as much as a permanent one, and for this reason the model understates the comovement of wages and future degrees. A cobweb model, in which students take the current wage as permanent, matches this comovement and fits about as well, but only with a nearly flat demand curve and an almost deterministic demand cycle. The answer matters for the demand side: the demand elasticity is about 1.6 under rational expectations, in line with \citet{ryoo2004engineering}, and almost four times as large under the cobweb.
+Our answers are as follows. Enrollment is highly sensitive to persistent changes in wages: a permanent 1 percent increase in the relative wage eventually raises the share of students choosing engineering by about 6 percent. The demand elasticity is about 1.6, in line with \citet{ryoo2004engineering}. Yet the large swings in engineering degrees come mainly from changes in the attractiveness of the field, which follow a damped cycle of about 22 years, rather than from wages.
 
-The method belongs to the literature that estimates linear rational-expectations models by full-information maximum likelihood. \citet{hansen1980formulating} showed how to formulate and estimate such models and stressed the restrictions that rational expectations impose across equations; \citet{sargent1989two} showed how to add measurement error and evaluate the likelihood with the Kalman filter; and \citet{hansen2013recursive} developed the recursive framework systematically. Applications include dynamic labor demand \citep{sargent1978estimation}, time to build \citep{altug1989time}, overtime and the business cycle \citep{hall1996overtime}, and hybrid DSGE--VAR models \citep{ireland2004method}. We apply this approach to a labor market with a training lag, in which the stock of workers is a slowly moving state and the expected returns to entry are not observed. The cost of joint estimation is that misspecification in any one equation affects all the estimates.
+Whether students distinguish temporary from permanent wage changes, the data cannot tell. A cobweb model, in which students expect the current wage to persist, fits about as well as the rational-expectations model and better matches the comovement of wages and future degrees, but only with a nearly flat demand curve. The answer to the fourth question therefore matters for the second: under the cobweb, the demand elasticity is almost four times as large.
+
+The method follows \citet{hansen1980formulating}, who showed how to estimate linear rational-expectations models subject to their cross-equation restrictions, \citet{sargent1989two}, who added measurement error and the Kalman filter, and \citet{hansen2013recursive}. Applications include dynamic labor demand \citep{sargent1978estimation}, time to build \citep{altug1989time}, overtime \citep{hall1996overtime}, and hybrid DSGE--VAR models \citep{ireland2004method}. We apply it to a labor market with a training lag, in which the stock of workers moves slowly and the expected returns to entry are not observed; the cost is that misspecification in any one equation affects all the estimates.
 
 Section \ref{sec:model} presents the model and Section \ref{sec:data} the data. Section \ref{sec:estimation} reports the estimates and the fit of the model, Section \ref{sec:dynamics} studies the dynamics, Section \ref{sec:cobweb} compares rational and cobweb expectations, and Section \ref{sec:conclusion} concludes.
 
@@ -72,7 +82,7 @@ Two shocks drive the model. A demand shock $\theta_t$ shifts the marginal produc
   \theta_{t+1} &= a^{\theta}_{1}\,\theta_t + a^{\theta}_{2}\,\theta_{t-1} + \sigma_{\theta}\,\varepsilon^{\theta}_{t+1}, \label{eq:theta}\\
   \psi_{t+1}   &= a^{\psi}_{1}\,\psi_t + a^{\psi}_{2}\,\psi_{t-1} + \sigma_{\psi}\,\varepsilon^{\psi}_{t+1}, \label{eq:psi}
 \end{align}
-where $\varepsilon^{\theta}_t$ and $\varepsilon^{\psi}_t$ are independent i.i.d.\ standard normal innovations. We do not restrict the roots to be real. When $a_1^{2}+4a_2<0$, the roots are a complex pair $re^{\pm i\omega}$, and the impulse response is an oscillation with a period of $2\pi/\omega$ years that decays at rate $r=\sqrt{-a_2}$ (Appendix \ref{app:ar2}). The discount factor is fixed at $\beta = 0.96$.
+where $\varepsilon^{\theta}_t$ and $\varepsilon^{\psi}_t$ are independent i.i.d.\ standard normal innovations. We do not restrict the roots to be real. When $a_1^{2}+4a_2<0$, the roots are a complex pair $re^{\pm i\omega}$, and the impulse response, $r^{h}\sin((h+1)\omega)/\sin\omega$, is an oscillation with a period of $2\pi/\omega$ years that decays at rate $r=\sqrt{-a_2}$. The discount factor is fixed at $\beta = 0.96$.
 
 \subsection{Firms, Households, and the Stock of Engineers}\label{sec:agents}
 
@@ -192,7 +202,7 @@ and use the residuals $\tilde w_t$, $\tilde N_t$, and $\tilde\pi_t$ as observati
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=0.8\linewidth]{fig_data_series.pdf}
+\includegraphics[width=0.72\linewidth]{fig_data_series.pdf}
 \caption{Relative wage, relative stock, and degree share, 1968--2010}\label{fig:series}
 \begin{minipage}{0.85\linewidth}\footnotesize
 \textit{Notes:} Top: the log ratios in \eqref{eq:datadef} (solid) and their linear trends (dashed). Bottom: the detrended series. The open circle marks the interpolated value for 1999. \textit{Sources:} CPS ASEC (IPUMS); NSF 13-327, Table 5.
@@ -252,7 +262,7 @@ form a 95 percent confidence interval.
 
 \subsection{Estimates}\label{sec:estimates}
 
-Table \ref{tab:estimates} reports the estimates, and Figure \ref{fig:profile} plots $LR(x)$ for nine parameters.
+Table \ref{tab:estimates} reports the estimates, which answer the first two questions, and Figure \ref{fig:profile} plots $LR(x)$ for nine parameters.
 
 \begin{table}[!htb]
 \centering
@@ -310,7 +320,7 @@ $\log L$ & Maximized log likelihood & 260.47 & & & \\
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=0.72\linewidth]{fig_profile.pdf}
+\includegraphics[width=0.66\linewidth]{fig_profile.pdf}
 \caption{Profile likelihood for selected parameters}\label{fig:profile}
 \begin{minipage}{0.8\linewidth}\footnotesize
 \textit{Notes:} Each panel plots $LR(x)$ in \eqref{eq:profile}. Rows: parameters bounded on both sides; bounded on one side; poorly determined. The dashed line is the 5 percent critical value, 3.84; the dotted line marks the estimate. The axes for $f_2$ and $d$ are logarithmic.
@@ -356,13 +366,15 @@ The model reproduces the volatility and persistence of all three series: each st
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Dynamics}\label{sec:dynamics}
 
+This section turns to the third question: how shocks propagate and where the fluctuations come from.
+
 \subsection{Impulse Responses}\label{sec:irf}
 
 In year 0 the economy is hit by a one-standard-deviation demand or preference shock, and no further shocks occur. By \eqref{eq:lawofmotion}, the state $h$ years after shock $j$ is $X_h = M^{h}Ce_j$, where $e_j$ is the $j$th unit vector, and the wage and enrollment are $w_h = G_wX_h$ and $n_h = -FX_h$. Figure \ref{fig:irf} plots the responses.
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=0.78\linewidth]{fig_irf.pdf}
+\includegraphics[width=0.7\linewidth]{fig_irf.pdf}
 \caption{Responses to one-standard-deviation demand and preference shocks}\label{fig:irf}
 \begin{minipage}{0.85\linewidth}\footnotesize
 \textit{Notes:} Top row: demand shock; bottom row: preference shock. Columns: percentage deviations of the relative wage, the enrollment share, and the relative stock. The middle bottom panel splits enrollment into the direct effect of preferences, $\psi_h$ (dashed), and the effect of expected wages, $\frac{1-\lambda}{d}V_h$ (dash-dotted). The vertical dotted line marks year 4, when the year-0 cohort graduates.
@@ -404,7 +416,7 @@ Three results stand out. First, about 97 percent of the variance of enrollment a
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Rational Expectations versus the Cobweb}\label{sec:cobweb}
 
-This section reports estimates under cobweb expectations \eqref{eq:cobweb}, with the same data and likelihood. The cobweb model replaces $d$ with $\eta$ and also has 14 free parameters.\footnote{The cobweb likelihood has several local maxima. Of six starting values, two reach a solution with $\log L = 259.59$ and $\eta = 0.41$; two reach $\log L = 263.07$, at which $\sigma_\psi \to 0$ and the roots of the preference shock reach the unit circle, so that the shock becomes a deterministic sine wave and the model has no stationary distribution; and two reach $\log L = 261.92$ and $262.00$ with $\eta \approx 5.1$. We exclude the degenerate solution and report the highest maximum among solutions whose roots all have modulus below 0.99.}
+This section turns to the fourth question and reports estimates under cobweb expectations \eqref{eq:cobweb}, with the same data and likelihood. The cobweb model replaces $d$ with $\eta$ and also has 14 free parameters.\footnote{The cobweb likelihood has several local maxima. Of six starting values, two reach a solution with $\log L = 259.59$ and $\eta = 0.41$; two reach $\log L = 263.07$, at which $\sigma_\psi \to 0$ and the roots of the preference shock reach the unit circle, so that the shock becomes a deterministic sine wave and the model has no stationary distribution; and two reach $\log L = 261.92$ and $262.00$ with $\eta \approx 5.1$. We exclude the degenerate solution and report the highest maximum among solutions whose roots all have modulus below 0.99.}
 
 \begin{table}[!htb]
 \centering
@@ -448,7 +460,7 @@ Table \ref{tab:cobweb} reports the two sets of estimates. The models fit the dat
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=0.7\linewidth]{fig_cw_leadcorr.pdf}
+\includegraphics[width=0.64\linewidth]{fig_cw_leadcorr.pdf}
 \caption{Correlation of the wage with the degree share $k$ years later}\label{fig:cwcorr}
 \begin{minipage}{0.7\linewidth}\footnotesize
 \textit{Notes:} Circles: data. Solid line and shaded band: median and 5th--95th percentile range across 1,000 simulated 43-year samples from the rational-expectations model. Dashed and dotted lines: the same for the cobweb model. Each sample is detrended as in the data.
@@ -459,25 +471,25 @@ Figure \ref{fig:cwcorr} shows that the cobweb model matches the correlation betw
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=0.7\linewidth]{fig_cw_irf.pdf}
+\includegraphics[width=0.62\linewidth]{fig_cw_irf.pdf}
 \caption{Responses under rational expectations and the cobweb}\label{fig:cwirf}
 \begin{minipage}{0.75\linewidth}\footnotesize
 \textit{Notes:} Solid: rational expectations; dashed: cobweb. Each shock is one standard deviation as estimated in that model. The vertical dotted line marks year 4.
 \end{minipage}
 \end{figure}
 
-Figure \ref{fig:cwirf} compares the impulse responses. Under a demand shock, the cobweb model produces the classic cobweb cycle: the wage rises, enrollment increases sharply, too many students graduate four years later, the wage falls back, and enrollment drops below normal. Part of this reversal, however, comes from the cycle in the demand shock itself. Under rational expectations, enrollment responds at once and then declines smoothly. Under a preference shock, cobweb enrollment moves one for one with the shock for four years, because the wage has not yet changed, whereas under rational expectations enrollment rises on impact by only about 37 percent of the shock.
+Figure \ref{fig:cwirf} compares the impulse responses. Under a demand shock, the cobweb model produces the classic cobweb cycle: the wage rises, enrollment increases sharply, too many students graduate four years later, the wage falls back, and enrollment drops below normal. Part of this reversal, however, comes from the cycle in the demand shock itself. Under a preference shock, cobweb enrollment moves one for one with the shock for four years, because the wage has not yet changed, whereas under rational expectations enrollment rises on impact by only about 37 percent of the shock.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}\label{sec:conclusion}
 
-Students choose a major four years before they enter the labor market, and what they care about is the wage over their careers. Estimating the Ryoo--Rosen model jointly by Kalman-filter maximum likelihood, we find that enrollment is highly sensitive to persistent wage changes under both rational and cobweb expectations. The large swings in the degree share are nonetheless not driven mainly by wages: about 97 percent of their variance comes from changes in the attractiveness of engineering itself.
+Estimating the Ryoo--Rosen model jointly by Kalman-filter maximum likelihood, we find that enrollment is highly sensitive to persistent wage changes under both rational and cobweb expectations, yet the large swings in the degree share come mainly from changes in the attractiveness of engineering, not from wages.
 
-What the data cannot settle is whether students look through temporary wage changes. Since \citet{freeman1971market,freeman1976cobweb}, booms and busts in the market for engineers have often been explained as a cobweb cycle in which they do not, and our data do not reject this explanation; \citet[p.~S135]{ryoo2004engineering} similarly found it difficult ``to isolate the precise expectations mechanism.'' Under rational expectations, students discount a wage increase they expect to fade, and the model understates the link between wages and future degrees. The cobweb model matches this link and attains a similar likelihood, but only with a nearly flat demand curve and an almost deterministic long cycle in demand. The two forms of expectations agree that enrollment responds strongly to persistent wage changes, but their estimates of the demand elasticity differ by a factor of almost four.
+What the data cannot settle is whether students distinguish temporary from permanent wage changes. Since \citet{freeman1971market,freeman1976cobweb}, booms and busts in the market for engineers have often been explained as a cobweb cycle in which they do not, and our data do not reject this explanation; \citet[p.~S135]{ryoo2004engineering} similarly found it difficult ``to isolate the precise expectations mechanism.'' The cobweb model matches the link between wages and future degrees that the rational-expectations model misses, but only with a nearly flat demand curve and an almost deterministic long cycle in demand, and the two models' estimates of the demand elasticity differ by a factor of almost four.
 
 Our numbers rest on several fixed choices: the discount factor is set at 0.96, each series is linearly detrended before estimation, the two shocks are independent, and enrollment involves no adjustment costs. The sample has only 43 annual observations, which bound the demand elasticity and the slope of the enrollment cost only from above, and about 81 percent of the variance of the observed stock is measurement error. These choices define the scope of our conclusions.
 
-The framework itself is not specific to engineers. Occupations in which entry requires years of training and the return to entry depends on wages earned long afterward, such as physicians, lawyers, teachers, and scientists, share its structure. Given series on relative wages, stocks, and entry, the planning problem, the state-space representation, and the likelihood carry over, with the state vector adjusted to the length of training. Estimating the model across occupations would show whether the patterns found here are particular to engineering or common to markets for trained labor.
+The framework itself is not specific to engineers. Occupations in which entry requires years of training and the return to entry depends on wages earned long afterward, such as physicians, lawyers, teachers, and scientists, share its structure. Given series on relative wages, stocks, and entry, the planning problem, the state-space representation, and the likelihood carry over, and estimates across occupations would show whether the patterns found here are particular to engineering.
 
 \bibliographystyle{agsm}
 \bibliography{references}
@@ -508,14 +520,6 @@ Iterating the constraint in \eqref{eq:household}, $\partial N^{h}_{s}/\partial n
   -d\,(n_t - \psi_t) + (1-\lambda)\, E_t \sum_{j=0}^{\infty} \beta^{4+j} \lambda^{j}\, w_{t+4+j} = 0 ,
 \]
 which is \eqref{eq:hhfocmain}; the second derivative is $-d<0$. If $w_{t+k}$ rises by one unit for all $k \ge 0$, then $\Delta V_t = \beta^{4}\sum_{j\ge0}(\beta\lambda)^{j} = \beta^{4}/(1-\beta\lambda)$ and $\Delta n_t = \eta^{LR}$.
-
-\subsection{Second-Order Autoregressions with Complex Roots}\label{app:ar2}
-
-The response $x_h = \partial x_{t+h}/\partial\varepsilon_t$ of $x_t = a_1 x_{t-1} + a_2 x_{t-2} + \varepsilon_t$ satisfies $x_h = a_1 x_{h-1} + a_2 x_{h-2}$ with $x_0 = 1$, $x_{-1} = 0$. With distinct roots $z_{1,2}$ of $z^{2} = a_1 z + a_2$, the solution is $x_h = (z_1^{h+1} - z_2^{h+1})/(z_1 - z_2)$. If $a_1^{2} + 4a_2 < 0$, then $z_{1,2} = re^{\pm i\omega}$ with $r^{2} = z_1z_2 = -a_2$ and $r\cos\omega = a_1/2$, and
-\[
-  x_h = \frac{2i\,r^{h+1}\sin\big((h+1)\omega\big)}{2i\,r\sin\omega} = r^{h}\,\frac{\sin\big((h+1)\omega\big)}{\sin\omega} ,
-\]
-an oscillation with period $2\pi/\omega$ whose amplitude decays at rate $r$.
 
 \subsection{Proof of Proposition \ref{prop:equivalence}}\label{app:equivalence}
 
